@@ -1,0 +1,103 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,700;0,900;1,300;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* global styles and resets */
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+body {
+  position: relative;
+  font-family: 'Roboto', sans-serif;
+}
+.calc_header {
+  top: calc(5rem + .01rem);
+}
+@media (min-width: 768px) {
+  .calc_header {
+    top: calc(6rem + .01rem);
+  }
+}
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+ 
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+ 
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+ 
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+ 
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+ 
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+ 
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+ 
+    --radius: 0.5rem;
+  }
+}
+ 
+@layer base {
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+  }
+  img {
+    @apply w-full object-cover
+  }
+}
+
+@layer components {
+  .show_lg {
+    @apply hidden lg:block
+  }
+  .title_categories {
+    @apply text-dark_primary text-xl
+  }
+  .title_single_product {
+    @apply text-2xl mb-10 font-medium
+  }
+  .btn_show_all {
+    @apply flex justify-center items-center mt-1 lg:justify-start text-lg text-dark_primary font-semibold underline
+  }
+  .tabs_categories {
+    @apply px-6 flex items-center h-full hover:bg-dark transition-all duration-700 text-lg lg:text-xl text-nowrap
+  }
+  .container_products {
+    @apply w-[90%] lg:w-[77%] max-w-7xl mx-auto pb-20 pt-5 lg:pt-12 lg:min-h-screen
+  }
+  .content_products {
+    @apply grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-8
+  }
+  .container_catalog {
+    @apply w-[88%] max-w-xl
+  }
+  .grid_basket {
+    @apply grid grid-cols-1 sm:grid-cols-2 items-center gap-3 sm:gap-10
+  }
+}
