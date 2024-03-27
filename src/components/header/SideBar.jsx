@@ -48,13 +48,13 @@ export const SideBar = () => {
       </div>
       <div className='grid gap-6 bg-card_gray p-8 rounded-b-2xl'>
         <Catalog />
-        <div className='grid gap-4'>
+        <div className='grid gap-3'>
           {sidebar.map((item, i) => (
             <Link
               onClick={() => dispatch(setOpenSidebar(false))}
               to={item.link}
               key={i}
-              className='flex items-center gap-4'
+              className='flex items-center gap-3'
             >
               <div>
                 <img src={item.icon} alt={item.text} />
