@@ -7,7 +7,7 @@ import { useEffect, useState } from 'react'
 const Favorite = () => {
   const { favorites } = useSelector((state) => state.favorite)
   const [selectedOption, setSelectedOption] = useState('Sort by popularity');
-  const [filteredProducts, setFilteredProducts] = useState(favorites)
+  const [filteredProducts, setFilteredProducts] = useState([])
 
   const handleSelectChange = (option) => {
     setSelectedOption(option)
@@ -21,7 +21,9 @@ const Favorite = () => {
       setFilteredProducts(sortedProducts);
     } else if (option === 'Price') {
       const sortedProducts = favorites.slice().sort((a, b) => a.actual_price - b.actual_price);
-      setFilteredProducts(sortedProducts);
+      setFilteredProducts(sortedProducts)
+    } else {
+      setFilteredProducts(favorites)
     }
   }
 
