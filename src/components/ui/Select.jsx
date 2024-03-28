@@ -3,7 +3,7 @@ import { MdKeyboardArrowDown } from 'react-icons/md'
 import OutsideClickHandler from 'react-outside-click-handler'
 
 export const Select = ({ selectedOption, onSelectChange }) => {
-  const options = ['Alphabetically', 'Price']
+  const options = ['Alphabetically (asc)', 'Alphabetically (desc)', 'Price (asc)', 'Price (desc)']
   const [isOpen, setIsOpen] = useState(false)
 
   const toggleOptions = () => {
@@ -19,7 +19,7 @@ export const Select = ({ selectedOption, onSelectChange }) => {
     <div className='relative font-light text-text_secondary'>
       <OutsideClickHandler onOutsideClick={() => setIsOpen(false)}>
         <div
-          className={`border rounded-xl flex items-center w-full py-2.5 cursor-pointer select-none pl-3 pr-20 mb-0.5 min-w-36`}
+          className={`border rounded-xl flex items-center w-full py-2.5 cursor-pointer select-none pl-3 pr-20 mb-0.5 min-w-52`}
           onClick={toggleOptions}
         >
           <p>{selectedOption}</p>

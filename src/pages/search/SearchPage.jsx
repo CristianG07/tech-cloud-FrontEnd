@@ -14,13 +14,17 @@ const SearchPage = () => {
 
   const handleSelectChange = (option) => {
     setSelectedOption(option)
-    if (option === 'Alphabetically') {
-      const sortedProducts = products.slice().sort((a, b) => a.name.localeCompare(b.name));
-      setFilteredProducts(sortedProducts);
-    } else if (option === 'Price') {
-      const sortedProducts = products.slice().sort((a, b) => a.actual_price - b.actual_price);
-      setFilteredProducts(sortedProducts);
+    let sortedProducts = [...products];
+    const [sortBy, sortOrder] = option.split(' ');
+    if (sortBy === 'Alphabetically') {
+      sortedProducts = sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === 'Price') {
+      sortedProducts = sortedProducts.sort((a, b) => a.actual_price - b.actual_price);
     }
+    if (sortOrder === '(desc)') {
+      sortedProducts = sortedProducts.reverse();
+    }
+    setFilteredProducts(sortedProducts);
   }
 
   useEffect(() => {

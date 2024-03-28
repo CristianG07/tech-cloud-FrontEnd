@@ -16,15 +16,17 @@ const Favorite = () => {
 
   const filterProducts  = (option) => {
     setSelectedOption(option)
-    if (option === 'Alphabetically') {
-      const sortedProducts = favorites.slice().sort((a, b) => a.name.localeCompare(b.name));
-      setFilteredProducts(sortedProducts);
-    } else if (option === 'Price') {
-      const sortedProducts = favorites.slice().sort((a, b) => a.actual_price - b.actual_price);
-      setFilteredProducts(sortedProducts)
-    } else {
-      setFilteredProducts(favorites)
+    let sortedProducts = [...favorites];
+    const [sortBy, sortOrder] = option.split(' ');
+    if (sortBy === 'Alphabetically') {
+      sortedProducts = sortedProducts.sort((a, b) => a.name.localeCompare(b.name));
+    } else if (sortBy === 'Price') {
+      sortedProducts = sortedProducts.sort((a, b) => a.actual_price - b.actual_price);
     }
+    if (sortOrder === '(desc)') {
+      sortedProducts = sortedProducts.reverse();
+    }
+    setFilteredProducts(sortedProducts)
   }
 
   useEffect(() => {
